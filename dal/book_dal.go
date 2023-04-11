@@ -54,7 +54,7 @@ func (dal *BookDal) Add(book *model.Book) (ID int64, dalErr error) {
 }
 
 func (dal *BookDal) Update(book *model.Book) (dalErr error) {
-	result := libraryDB.Model(&model.Book{}).Omit("modify_time", "create_time").Updates(book)
+	result := libraryDB.Model(&model.Book{}).Omit("modify_time", "create_time").Where("id = ?", book.ID).Updates(book)
 	if result.Error != nil {
 		dalErr = fmt.Errorf("update book(ID=%d) failed: %w", book.ID, result.Error)
 		return dalErr
@@ -66,6 +66,15 @@ func (dal *BookDal) DelByID(id int64) (dalErr error) {
 	result := libraryDB.Model(&model.Book{}).Omit("modify_time", "create_time").Update("del", 1)
 	if result.Error != nil {
 		dalErr = fmt.Errorf("delete book(ID=%d) failed: %w", id, result.Error)
+		return dalErr
+	}
+	return nil
+}
+
+func (dal *BookDal) DelByIDs(ids []int64) (dalErr error) {
+	result := libraryDB.Model(&model.Book{}).Omit("modify_time", "create_time").Where("id IN ?", ids).Update("del", 1)
+	if result.Error != nil {
+		dalErr = fmt.Errorf("delete book(IDs=%v) failed: %w", ids, result.Error)
 		return dalErr
 	}
 	return nil

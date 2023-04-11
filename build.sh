@@ -10,5 +10,5 @@ gofmt -l -w -s .
 #echo "gofmt done"
 
 #echo "build main program"
-go build -o output/bin/${RUN_NAME}
+go build -tags=jsoniter -o output/bin/${RUN_NAME}
 echo "build completed: output/bin/${RUN_NAME}"

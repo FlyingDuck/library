@@ -9,6 +9,7 @@ import (
 
 func main() {
 	r := gin.Default()
+	r.Use(middleware.AccessLog())
 	r.Use(middleware.Cors())
 	// route
 	r.GET("/ping", handler.PingHandler)
