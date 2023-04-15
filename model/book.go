@@ -8,18 +8,20 @@ import (
 )
 
 type Book struct {
-	ID       int64  `gorm:"column:id;primary_key;AUTO_INCREMENT" json:"id"`
-	BookName string `gorm:"column:book_name" json:"book_name"`
-	Author   string `gorm:"column:author" json:"author"`
-	Category string `gorm:"column:category" json:"category"`
-	Location string `gorm:"column:location" json:"location"`
-	Notice   string `gorm:"column:notice" json:"notice"`
-	Source   string `gorm:"column:source" json:"source"`
-	State    string `gorm:"column:state" json:"state"`
-	Keywords CSSA   `gorm:"column:keywords" json:"keywords"`
-	Images   CSSA   `gorm:"column:images" json:"images"`
-	Abstract string `gorm:"column:abstract" json:"abstract"`
-	ISBN     string `gorm:"column:isbn" json:"isbn"`
+	ID        int64  `gorm:"column:id;primary_key;AUTO_INCREMENT" json:"id"`
+	BookName  string `gorm:"column:book_name" json:"book_name"`
+	Author    string `gorm:"column:author" json:"author"`
+	Category  string `gorm:"column:category" json:"category"`
+	Location  string `gorm:"column:location" json:"location"`
+	Notice    string `gorm:"column:notice" json:"notice"`
+	Source    string `gorm:"column:source" json:"source"`
+	State     string `gorm:"column:state" json:"state"`
+	Keywords  CSSA   `gorm:"column:keywords" json:"keywords"`
+	Images    CSSA   `gorm:"column:images" json:"images"`
+	Abstract  string `gorm:"column:abstract" json:"abstract"`
+	Theme     string `gorm:"column:theme" json:"theme"`
+	Publisher string `gorm:"column:publisher" json:"publisher"`
+	ISBN      string `gorm:"column:isbn" json:"isbn"`
 
 	CreateTime time.Time `gorm:"column:create_time;default:CURRENT_TIMESTAMP;NOT NULL" json:"-"` // 创建时间
 	ModifyTime time.Time `gorm:"column:modify_time;default:CURRENT_TIMESTAMP;NOT NULL" json:"-"` // 更新时间

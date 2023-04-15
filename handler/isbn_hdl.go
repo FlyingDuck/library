@@ -83,7 +83,7 @@ func ISBNHandler(c *gin.Context) {
 		case "内容提要":
 			book.Abstract = value
 		case "主题":
-			book.Notice = value
+			book.Theme = value
 		//case "题名":
 		//	book.BookName = value
 		//case "著者":
@@ -94,6 +94,8 @@ func ISBNHandler(c *gin.Context) {
 				book.BookName = strings.TrimSpace(parts[0])
 				book.Author = strings.TrimSpace(parts[1])
 			}
+		case "出版项":
+			book.Publisher = value
 		default:
 			continue
 		}

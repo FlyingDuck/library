@@ -23,38 +23,42 @@ func AddHandler(c *gin.Context) {
 	keywordArrayStr := c.PostForm("keyword_list")
 	imageArrayStr := c.PostForm("image_list")
 	abstract := c.PostForm("abstract")
+	theme := c.PostForm("theme")
+	publisher := c.PostForm("publisher")
 	isbn := c.PostForm("isbn")
 
 	keywords := strings.Split(keywordArrayStr, ",")
 	images := strings.Split(imageArrayStr, ",")
 
 	book := &model.Book{
-		ID:       id,
-		BookName: bookname,
-		Author:   author,
-		Category: category,
-		Location: location,
-		Notice:   notice,
-		Source:   source,
-		State:    state,
-		Keywords: keywords,
-		Images:   images,
-		Abstract: abstract,
-		ISBN:     isbn,
+		ID:        id,
+		BookName:  bookname,
+		Author:    author,
+		Category:  category,
+		Location:  location,
+		Notice:    notice,
+		Source:    source,
+		State:     state,
+		Keywords:  keywords,
+		Images:    images,
+		Abstract:  abstract,
+		Theme:     theme,
+		Publisher: publisher,
+		ISBN:      isbn,
 	}
 
 	bookDal := dal.NewBookDal()
 	if book.ID > 0 {
 		dalErr := bookDal.Update(book)
 		if dalErr != nil {
-			log.Fatalln(dalErr)
+			log.Println(dalErr)
 		} else {
 			log.Println("update book")
 		}
 	} else {
 		ID, dalErr := bookDal.Add(book)
 		if dalErr != nil {
-			log.Fatalln(dalErr)
+			log.Println(dalErr)
 		} else {
 			log.Printf("new book(ID=%d) info\n", ID)
 		}
