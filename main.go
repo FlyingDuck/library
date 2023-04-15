@@ -19,6 +19,7 @@ func main() {
 	r.POST("/book/del/:id", handler.DeleteHandler)
 	r.POST("/book/add", handler.AddHandler)
 	r.POST("/upload", handler.UploadHandler)
+	r.GET("/isbn/:isbn", handler.ISBNHandler)
 
 	// init
 	dal.Init()

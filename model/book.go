@@ -19,6 +19,7 @@ type Book struct {
 	Keywords CSSA   `gorm:"column:keywords" json:"keywords"`
 	Images   CSSA   `gorm:"column:images" json:"images"`
 	Abstract string `gorm:"column:abstract" json:"abstract"`
+	ISBN     string `gorm:"column:isbn" json:"isbn"`
 
 	CreateTime time.Time `gorm:"column:create_time;default:CURRENT_TIMESTAMP;NOT NULL" json:"-"` // 创建时间
 	ModifyTime time.Time `gorm:"column:modify_time;default:CURRENT_TIMESTAMP;NOT NULL" json:"-"` // 更新时间
