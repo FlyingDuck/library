@@ -23,6 +23,7 @@ func AddHandler(c *gin.Context) {
 	keywordArrayStr := c.PostForm("keyword_list")
 	imageArrayStr := c.PostForm("image_list")
 	abstract := c.PostForm("abstract")
+	isbn := c.PostForm("isbn")
 
 	keywords := strings.Split(keywordArrayStr, ",")
 	images := strings.Split(imageArrayStr, ",")
@@ -39,6 +40,7 @@ func AddHandler(c *gin.Context) {
 		Keywords: keywords,
 		Images:   images,
 		Abstract: abstract,
+		ISBN:     isbn,
 	}
 
 	bookDal := dal.NewBookDal()
